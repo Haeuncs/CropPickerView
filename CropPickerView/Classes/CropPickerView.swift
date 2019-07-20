@@ -31,7 +31,6 @@ public protocol CropPickerViewDelegate: class {
 @IBDesignable
 public class CropPickerView: UIView {
     public weak var delegate: CropPickerViewDelegate?
-    
     // MARK: Public Property
     
     // Set Image
@@ -41,6 +40,7 @@ public class CropPickerView: UIView {
             return self.imageView.image
         }
         set {
+          
             self.imageView.image = newValue
             self.scrollView.setZoomScale(1, animated: false)
             if self.scrollView.delegate == nil {
@@ -156,7 +156,12 @@ public class CropPickerView: UIView {
             self.cropView.isHidden = !newValue
         }
     }
-    
+  // Fix Orientation
+  public func setImage(image: UIImage){
+    let checkImage = image.fixedOrientation()
+    self.image = checkImage
+  }
+
     // MARK: Private Property
     
     private lazy var scrollView: UIScrollView = {

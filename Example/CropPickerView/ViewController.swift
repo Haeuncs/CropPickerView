@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     
     @objc func refreshTap(_ sender: UIBarButtonItem) {
         let image = UIImage(named: "\(Int.random(in: 1...6)).png")
-        self.cropPickerView.image = image
+      self.cropPickerView.setImage(image: image)
     }
 
 }
